@@ -1,0 +1,483 @@
+/* GENERAL */
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  src: url('/fonts/titillium-web-v17-latin-regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.titilium-web {
+  font-family: 'Titillium Web', sans-serif !important;
+}
+
+.background {
+  background-image: url('/images/mesh-190.png');
+}
+
+canvas {
+  touch-action: none;
+  display: block;
+}
+
+/* LOADING SCREEN */
+.loading-screen {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 25, 51);
+}
+
+.terminal_emulator {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  min-height: 100%;
+  padding: 40px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  text-align: left;
+  font-family: monospace;
+  font-weight: 700;
+  color: #ffffff;
+  overflow-y: auto;
+}
+
+.terminal_emulator__field,
+.terminal_emulator__command {
+  position: relative;
+
+  padding: 0 10.5em;
+  margin: 0 0 9px 0;
+
+  &:before,
+  &:after {
+    position: absolute;
+  }
+
+  &:before {
+    left: 0;
+    top: 0;
+    color: #8ae234;
+    content: 'arthur@panazolo:~$ ';
+  }
+}
+
+.terminal_emulator__response,
+.terminal_emulator__command b {
+  padding-bottom: 9px;
+}
+
+.terminal_emulator__field {
+  display: inline-block;
+  min-width: 1em;
+  min-height: 1.5em;
+  box-sizing: border-box;
+  &:after {
+    right: 9.5em;
+    bottom: 0.25em;
+    content: '';
+    width: 0.9em;
+    height: 1.5em;
+    background: white;
+    animation: caretBlink 1s infinite;
+  }
+
+  &.waiting {
+    padding-left: 0;
+    padding-right: 0;
+    &:before {
+      display: none;
+    }
+  }
+}
+
+@keyframes caretBlink {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  51% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* SCREENS */
+.bootScreen {
+  touch-action: pan-y;
+}
+
+.bootScreen img {
+  width: 2075px;
+  height: 1300px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+}
+
+.linkedInScreen {
+  max-height: 1300px;
+  border-radius: 20px;
+  overflow-y: auto;
+  touch-action: pan-y;
+}
+
+.linkedInScreen img {
+  width: 2075px;
+  border: none;
+  border-radius: 20px;
+  background: transparent;
+}
+
+.githubHtmlScreen {
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.githubHtmlScreen iframe {
+  width: 2088px;
+  height: 1300px;
+  border-radius: 20px 42px 42px 20px;
+  border: none;
+}
+
+.githubScrollbarHider {
+  width: 2070px;
+  max-height: 1300px;
+  overflow-y: auto;
+  touch-action: pan-y;
+  border-radius: 20px;
+}
+
+.githubScrollbarHider img {
+  width: 2070px;
+  height: auto;
+  border: none;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* BUTTONS */
+.htmlButton {
+  transition: all 0.5s ease;
+  color: black;
+  border: 1px solid black;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  line-height: 1;
+  font-size: 0.4rem;
+  background-color: transparent;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+  padding-bottom: 0.5px;
+  outline: none;
+  border-radius: 50%;
+  opacity: 0;
+}
+
+.pulsing {
+  animation: animate-pulse 4s linear infinite;
+}
+
+.htmlButton:hover,
+.htmlButton.active {
+  color: black;
+  background-color: white;
+  border-color: white;
+}
+
+.active {
+  pointer-events: none;
+  cursor: default;
+}
+
+@keyframes animate-pulse {
+  0% {
+    box-shadow: 0 0 0 0 #fff, 0 0 0 0 #fff;
+  }
+  40% {
+    box-shadow: 0 0 0 3px rgba(255, 109, 74, 0), 0 0 0 0 #fff;
+  }
+  80% {
+    box-shadow: 0 0 0 3px rgba(255, 109, 74, 0), 0 0 0 3px rgba(255, 109, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 109, 74, 0), 0 0 0 3px rgba(255, 109, 74, 0);
+  }
+}
+
+/* SOCIAL-MEDIA-PANEL */
+.social-media-panel-container {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  width: 100%;
+  color: rgba(0, 25, 51);
+}
+
+.social-media-panel-container.show {
+  opacity: 1;
+}
+
+.social-media-panel {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.social-active {
+  pointer-events: none;
+  color: white;
+}
+
+.social-media-link {
+  margin: 0 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in;
+}
+
+.social-media-link a {
+  color: rgba(0, 25, 51);
+  text-decoration: none;
+  transition: all 0.2s ease-in;
+}
+
+.social-media-link:hover,
+.social-media-link a:hover {
+  color: white;
+}
+
+/* EXTERNAL LINK */
+.external-link {
+  color: rgba(0, 25, 51);
+  display: inline-block;
+  padding: 5px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.external-link a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* PAGEBUTTONSHUB */
+.interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+.pageButtonsHubWrapper {
+  top: 20%;
+}
+
+.controls {
+  position: absolute;
+  top: 15%;
+  left: 0;
+}
+
+.controls .raw {
+  display: flex;
+  justify-content: center;
+}
+
+.controls .key {
+  width: 40px;
+  height: 40px;
+  margin: 4px;
+  border: 2px solid #ffffff;
+  background: #ffffff44;
+}
+
+.controls .key.large {
+  width: 144px;
+}
+
+.controls .key.active {
+  background: #ffffff99;
+}
+
+.transition {
+  transition: all 0.1s ease;
+}
+
+.section {
+  padding: 2em;
+  gap: 0.25em;
+  text-align: center;
+  /* position: relative; */
+}
+
+button {
+  border: none !important;
+  outline: none !important;
+  background: none;
+}
+
+.btn {
+  position: relative;
+  margin: 1em;
+  text-align: start !important;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 2rem !important;
+  transition: all 0.3s ease-in !important;
+  border: none;
+  outline: none;
+}
+
+.btn[disabled] {
+  opacity: 1 !important;
+}
+
+.btn:focus,
+.btn:active {
+  outline: none;
+  border: none;
+}
+
+.btn--ghost {
+  background-color: transparent !important;
+  color: rgba(0, 25, 51) !important;
+  border-radius: 100%;
+  transition: all 0.2s ease-in;
+  position: relative;
+}
+
+.btn--ghost:hover {
+  background-color: transparent !important;
+  color: #ffffff !important;
+}
+
+/* Extra large devices (large desktops) */
+@media (min-width: 1200px) {
+  #custom-btn {
+    font-size: 2rem !important; /* Slightly smaller */
+  }
+}
+
+/* Large devices (desktops) */
+@media (min-width: 992px) and (max-width: 1199px) {
+  #custom-btn {
+    font-size: 1.6rem !important; /* Smaller for standard desktops */
+  }
+}
+
+/* Medium devices (tablets) */
+@media (min-width: 768px) and (max-width: 991px) {
+  #custom-btn {
+    font-size: 1.4rem !important; /* Smaller for tablets */
+  }
+}
+
+/* Small devices (phones) */
+@media (min-width: 576px) and (max-width: 767px) {
+  #custom-btn {
+    font-size: 1.4rem !important; /* Smaller for phones */
+  }
+}
+
+/* Extra small devices (very small phones) */
+@media (max-width: 575px) {
+  .section {
+    padding-top: 5em;
+    padding-left: 1em;
+  }
+  #custom-btn {
+    font-size: 0.8rem !important; /* Smallest font for very small screens */
+  }
+}
+
+.active-button {
+  color: #ffffff !important;
+  pointer-events: none;
+}
+
+.active-button::before {
+  font-family: 'Sans-serif'; /* Font family */
+  content: '•'; /* The dot character */
+  margin-right: 5px; /* Space between dot and text */
+  font-size: 1.2em; /* Adjust size if needed */
+  color: #ffffff; /* Change color if desired */
+  border-radius: 50%; /* Rounded corners */
+}
+
+.inactive-button::before {
+  font-family: 'Sans-serif'; /* Font family */
+  content: '•'; /* The dot character */
+  margin-right: 5px; /* Space between dot and text */
+  font-size: 1.2em; /* Adjust size if needed */
+  color: #ffffff; /* Change color if desired */
+  visibility: hidden; /* Initially hidden */
+  border-radius: 50%; /* Rounded corners */
+}
+
+.dot {
+  display: inline-block;
+  width: 0.4rem; /* Dot width */
+  height: 0.4rem; /* Dot height */
+  background-color: #ffffff; /* Dot color */
+  border-radius: 50%; /* Make it circular */
+  vertical-align: middle; /* Align with text */
+  opacity: 0; /* Start hidden */
+  transition: opacity 0.5s ease; /* Smooth transition for opacity */
+  position: absolute;
+  transform: translateY(210%) translateX(-400%); /* Center horizontally */
+}
+
+.dot-active {
+  opacity: 1; /* Show the dot */
+}
+
+.rounded-image {
+  border-radius: 50%;
+  width: 400px;
+  height: 400px;
+  object-fit: cover;
+  border: 6px solid white;
+}
+
+/* SKILLS PAGE */
+
+.border-card {
+  border: 5px solid #ffffff !important;
+  background: transparent !important;
+}
+
+.skills-column {
+  gap: 0.4rem;
+}
+
+.skill_name {
+  gap: 1.8rem;
+}
