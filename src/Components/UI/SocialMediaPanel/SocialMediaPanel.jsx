@@ -107,7 +107,7 @@ export default function SocialMediaPanel({
         <div className="social-media-panel">
           <div className="social-media-link">
             <a
-              href="https://instagram.com/startaper.uz"
+              href="https://instagram.com/785.lvle"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -116,7 +116,7 @@ export default function SocialMediaPanel({
           </div>
           <div className="social-media-link">
             <a
-              href="https://t.me/begzad_abdunazarov"
+              href="https://t.me/Berdibek011"
               target="_blank"
               rel="noopener noreferrer"
             >

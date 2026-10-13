@@ -62,9 +62,9 @@ export default function AboutMe({ visible, infoPagesVisited }) {
             <div className="d-flex col-sm-4 justify-content-center">
               <div className="mt-3 pt-3">
                 <img
-                  // src="https://via.placeholder.com/400x400"
-                  src="/images/image.png"
-                  alt="client-image"
+
+                  src="/images/berdibek.jpg"
+                  alt="Berdibek Baynazarov"
                   className="img-fluid rounded-circle rounded-image"
                 ></img>
               </div>
@@ -73,7 +73,7 @@ export default function AboutMe({ visible, infoPagesVisited }) {
               <div className="">
                 <p className="lead" style={{ textAlign: 'justify' }}>
                   Salom, Mening ismim{' '}
-                  <strong style={{ color: '#ffff01' }}>Begzod Abdinazarov.</strong>{' '}
+                  <strong style={{ color: '#ffff01' }}>Berdibek Baynazarov.</strong>{' '}
                   Men tezkor, moslashuvchan va vizual jihatdan chiroyli veb-ilovalar yaratishga ishtiyoqli Full Stack veb-dasturchisiman.
                 </p>
                 <p className="lead" style={{ textAlign: 'justify' }}>

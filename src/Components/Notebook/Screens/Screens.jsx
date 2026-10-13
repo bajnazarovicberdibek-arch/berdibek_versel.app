@@ -17,7 +17,7 @@ function LinuxBootScreen({
       rotation-x={-0.256}
       ref={refName}
     >
-      <img src="./images/boot_sequence.gif"></img>
+<img src="/images/berdibek_Versel.png" alt="GitHub profilim" />
     </Html>
   );
 }
